@@ -15,6 +15,7 @@
 # Кроме того
 - Python
 - Датасеты, находящиеся по ссылке https://drive.google.com/drive/folders/1usY-4CxLIz_8izBB9uAbg-JQEKSkPMg6
+- Все файлы с расширением .py из этого репозитория(SQLite.py Postgres.py Pandas.py DuckDB.py)
 ----------------------------------
 # Основные моменты, необходимые для запуска:
 - CSV-файлы должны находиться по пути ./DBases/<file>.csv от рабочей директории.
