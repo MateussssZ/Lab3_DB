@@ -40,7 +40,13 @@ def check_Time(mode,table_df,n): #mode - tiny или big, table_df - нужны�
         second_Query(table_df,total_time)
         third_Query(table_df,total_time)
         fourth_Query(table_df,total_time)
-    print(f"Average working time of first query on {mode} dataset is {(total_time[0] / n):.03f}s\n"
+    if (mode=='big'):
+            big_total_time[0]=total_time[0]
+            big_total_time[1]=total_time[1]
+            big_total_time[2] = total_time[2]
+            big_total_time[3] = total_time[3]
+    else:
+        print(f"Average working time of first query on {mode} dataset is {(total_time[0] / n):.03f}s\n"
           f"Average working time of second query on {mode} dataset  is {(total_time[1] / n):.03f}s\n"
           f"Average working time of third query on {mode} dataset  is {(total_time[2] / n):.03f}s\n"
           f"Average working time of fourth query on {mode} dataset is {(total_time[3] / n):.03f}s\n")
@@ -50,8 +56,14 @@ try:
     tiny_table_df = pd.read_csv("./DBases/nyc_yellow_tiny.csv")
     check_Time('tiny',tiny_table_df,15) #Считываем малый датасет и сразу отправляем на тесты
     big_table_df = pd.read_csv("./DBases/nyc_yellow_big-001.csv",chunksize=10000000) #Большой датасет сжирает к **** мои 16 Гб оперативы
+    big_total_time=[0]*4
+    num_of_tests=10;
     for chunk in big_table_df:  #И крашит процесс, поэтому делим его на 2 примерно равных чанка и замеряем для каждого чанка время по очереди
-        check_Time('big', chunk, 10)
+        check_Time('big', chunk, num_of_tests)
+    print(f"Average working time of first query on big dataset is {(big_total_time[0] / num_of_tests):.03f}s\n"
+          f"Average working time of second query on big dataset  is {(big_total_time[1] / num_of_tests):.03f}s\n"
+          f"Average working time of third query on big dataset  is {(big_total_time[2] / num_of_tests):.03f}s\n"
+          f"Average working time of fourth query on big dataset is {(big_total_time[3] / num_of_tests):.03f}s\n")
 except Exception as error:  # При обнаружении ошибки выдаём ошибку
     print("Ошибка при работе с Pandas:", error)
 finally: #При успешной работе завершаем её
