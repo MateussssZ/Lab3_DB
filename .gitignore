@@ -1,3 +1,4 @@
 /duckdb_taxi.db
 /taxi_sqlite.db
 /DBases
+/__pycache__
