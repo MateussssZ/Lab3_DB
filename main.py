@@ -1,13 +1,13 @@
 import json
 
-with open("config.json",'r+') as config_json:
+with open("config.json",'r+') as config_json: #Открываем JSON-файл и превращаем его в объект пайтона
     config = json.load(config_json)
 check = config["libraries"]["Num_Of_Starts"]
 
-if check[0]>0:
-    import Postgress
-    Settings=Postgress.PostgresBench(config["PostgresDataBase"],check[0],config["libraries"]["Folder_with_CSV"])
-    Postgress.start(Settings)
+if check[0]>0: #Проверяем, сколько тестов нужно для каждой библиотеки(Если <=0, то скипаем библиотеку)
+    import Postgress #Импортируем файл с интересующей нас библиотекой
+    Settings=Postgress.PostgresBench(config["PostgresDataBase"],check[0],config["libraries"]["Folder_with_CSV"]) #Передаём параметры конфига в класс, связанный с нашей библиотекой
+    Postgress.start(Settings) #Запускаем наш бенчмарк и передаём в него созданный выше класс, который работает как некий посредник между конфигом и файлом
 
 if check[1]>0:
     import SQLite
