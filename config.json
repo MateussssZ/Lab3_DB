@@ -1,0 +1,13 @@
+{
+  "libraries":{
+    "_сomment_":"For Num_Of_Starts the libraries go in the following order: psycopg2, SQLite, Pandas, DuckDB, SQLAlchemy",
+    "Num_Of_Starts":[10,10,10,10,10],
+    "Folder_with_CSV":"./DBases"
+    },
+  "PostgresDataBase":{
+    "host":"localhost",
+    "port":"5432",
+    "user":"postgres",
+    "password":"password"
+    }
+}
