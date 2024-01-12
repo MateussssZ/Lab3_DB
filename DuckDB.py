@@ -10,7 +10,7 @@ class PandasBench():
         self.CSV_Folder=CSV_Folder
 
 def create_table(LibraryInfo,cursor):
-    Big_Create_String="CREATE TABLE IF NOT EXISTS big_taxi AS SELECT * FROM read_csv_auto('"+LibraryInfo+"/nyc_yellow_big-001.csv')"
+    Big_Create_String="CREATE TABLE IF NOT EXISTS big_taxi AS SELECT * FROM read_csv_auto('"+LibraryInfo+"/nyc_yellow_big.csv')"
     Tiny_Create_String="CREATE TABLE IF NOT EXISTS big_taxi AS SELECT * FROM read_csv_auto('"+LibraryInfo+"/nyc_yellow_tiny.csv')"
     cursor.sql(Big_Create_String)
     cursor.sql(Tiny_Create_String)
