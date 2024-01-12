@@ -65,7 +65,7 @@ def start(config):
     try:
         pd.options.mode.chained_assignment = None  # default='warn' Убираем лишние warning, чтобы не мозолили глаза
         tiny_table_df = pd.read_csv(config.CSV_Folder+"/nyc_yellow_tiny.csv")
-        big_table_df = pd.read_csv(config.CSV_Folder+"/nyc_yellow_big-001.csv",
+        big_table_df = pd.read_csv(config.CSV_Folder+"/nyc_yellow_big.csv",
                                    chunksize=10000000)  # Большой датасет сжирает к **** мои 16 Гб оперативы
 
         Num_Of_Tests=config.Num_Of_Tests
