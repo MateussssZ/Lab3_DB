@@ -28,7 +28,7 @@ def create_table(PostgresInfo,CSVFolder,cursor,connection):
     cursor.execute("ALTER TABLE table_1 ALTER COLUMN tpep_pickup_datetime "
                 "TYPE timestamp without time zone USING tpep_pickup_datetime::timestamp without time zone")
 
-    csv_table=pd.read_csv(CSVFolder+r"/nyc_yellow_big-001.csv",chunksize=6500000)
+    csv_table=pd.read_csv(CSVFolder+r"/nyc_yellow_big.csv",chunksize=6500000)
     for chunk in csv_table:
         chunk.to_sql('table_2',engine,if_exists='append',index=False,chunksize=10000)
     cursor.execute("ALTER TABLE table_2 ALTER COLUMN tpep_dropoff_datetime "
