@@ -17,7 +17,7 @@ def create_table(conn,LibraryInfo):
         LibraryInfo+"/nyc_yellow_tiny.csv")  # Превращаем csv в dataframe и из него строим нужную нам таблицу на базе данных
     tiny_data.to_sql('table_1', conn, if_exists='replace', index=False)
 
-    big_data = pd.read_csv(LibraryInfo+"/nyc_yellow_big-001.csv", chunksize=9000000)
+    big_data = pd.read_csv(LibraryInfo+"/nyc_yellow_big.csv", chunksize=9000000)
     for chunk in big_data:  #Аналогично с большим датасетом, но его разбиваем на чанки(чтобы не было SIGKILL и др. подобных ошибок
         chunk.to_sql('table_2', conn, if_exists='append', index=False, chunksize=10000, method='multi')
 
