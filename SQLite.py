@@ -13,7 +13,7 @@ class SQLiteBench():
 def create_table(LibraryInfo,connection):
     tiny_data = pd.read_csv(LibraryInfo+r"/nyc_yellow_tiny.csv") #Превращаем csv в dataframe и из него строим нужную нам таблицу на базе данных
     tiny_data.to_sql('tiny_taxi', connection, if_exists='replace', index=False)
-    big_data = pd.read_csv(LibraryInfo["Folder_with_CSV"]+r"/nyc_yellow_big-001.csv",chunksize=9000000)
+    big_data = pd.read_csv(LibraryInfo["Folder_with_CSV"]+r"/nyc_yellow_big.csv",chunksize=9000000)
     for chunk in big_data:
         chunk.to_sql('big_taxi', connection, if_exists='append', index=False,chunksize=10000,method='multi')
 
