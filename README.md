@@ -154,6 +154,10 @@ query=(select(table.c.passenger_count, extract("year", table.c.tpep_pickup_datet
 
 :x: Довольно медленная по сравнению с другими <u>современными</u> библиотеками(по скорости схожа с psycopg2)
 
+<h1 style="text-align: center; font-size: 25px">Таблицы с получившимися замерами</h1>
+
+## Время на малом датасете(мс)
+
 | Library    | 1 query | 2 query | 3 query | 4 query |
 |------------|:-------:|:-------:|:-------:|:-------:|
 | `psycopg2`   |   134   |   194   |   617   |   648   |
@@ -161,6 +165,8 @@ query=(select(table.c.passenger_count, extract("year", table.c.tpep_pickup_datet
 | `sqlite3`    |   431   |   746   |  1470   |  2978   |
 | `pandas`     |   21    |   35    |   399   |   424   |
 | `sqlalchemy` |  160    |  200    |  642    |  663    |
+
+## Время на большом датасете(мс)
 
 | Library   | 1 query | 2 query | 3 query | 4 query |
 |-----------|:-------:|:-------:|:-------:|:-------:|
